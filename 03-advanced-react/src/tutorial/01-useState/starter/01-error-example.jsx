@@ -1,5 +1,14 @@
+import { useState } from "react";
+
 const ErrorExample = () => {
-  return <h2>useState error example</h2>;
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <h2>{count}</h2>
+      <button type="button">click to update the count</button>
+    </>
+  );
 };
 
 export default ErrorExample;
