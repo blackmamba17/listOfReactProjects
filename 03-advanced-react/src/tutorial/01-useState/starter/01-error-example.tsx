@@ -9,6 +9,7 @@ const ErrorExample = () => {
       <h2>{count}</h2>
       <button
         type="button"
+        className="btn"
         onClick={() => {
           setCount((prevValue) => prevValue + 1);
         }}
