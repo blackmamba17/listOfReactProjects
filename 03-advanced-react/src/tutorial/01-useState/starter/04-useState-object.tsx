@@ -26,6 +26,7 @@ const UseStateObject = () => {
       <h2>{arrayOfPerson[0].età}</h2>
       <h3>{arrayOfPerson[0].passione}</h3>
       <button
+        className="btn"
         type="button"
         onClick={() => {
           setArrayOfPerson([...shuffleAlgorithm()]);
