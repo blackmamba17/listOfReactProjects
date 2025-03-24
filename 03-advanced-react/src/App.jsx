@@ -1,9 +1,11 @@
-import Test from './tutorial/02-useEffect/starter/05-cleanup-function'
+import { VideoPlayer } from './tutorial/02-useEffect/starter/05-cleanup-function'
 
 function App() {
   return (
     <div className='container'>
-      <Test />
+      <video controls>
+        <source src='nuovovideo.mp4' />
+      </video>
     </div>
   );
 }

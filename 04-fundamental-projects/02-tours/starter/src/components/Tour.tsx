@@ -2,18 +2,28 @@ import React, { FC, useState } from "react";
 import { TourType } from "./CarouselOfTours";
 
 export const Tour: FC<{ tour: TourType, removeTour: (id: string) => void }> = ({ tour, removeTour }) => {
-    const [readMoreOrLess, setReadMoreOrLess] = useState<'...read more' | '...read less'>('...read more')
+    const [readMoreOrLess, setReadMoreOrLess] = useState<'...read more' | ' read less'>('...read more')
+    const [isHover, setIsHover] = useState(false)
+    const [isArticleHover, setIsArticleHover] = useState(false)
 
     return (
         <article
+            onMouseEnter={() => {
+                setIsArticleHover(!isArticleHover)
+            }}
+
+            onMouseLeave={() => {
+                setIsArticleHover(!isArticleHover)
+            }}
+
             style={{
                 boxSizing: "border-box",
                 display: "block",
                 position: "relative",
                 margin: "1rem",
-                boxShadow: "0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5)",
-                minWidth: "35%",
-                maxWidth: "35%",
+                boxShadow: isArticleHover ? "0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5)" : "0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.5)",
+                width: "450px",
+                height: "600px",
                 borderRadius: "0.5rem"
             }}>
             <img
@@ -36,20 +46,24 @@ export const Tour: FC<{ tour: TourType, removeTour: (id: string) => void }> = ({
                 padding: "0.5rem",
                 borderRadius: " 0 0.5rem 0 0.5rem"
             }}>${tour.price}</p>
-            <div style={{ padding: "1rem" }}>
-                <h4>
+            <div style={{ padding: "1rem", display: "flex", flexDirection: "column", margin: "0.5rem", justifyContent: "center", alignContent: "center", alignItems: "center" }}>
+                <h5 style={{ textDecoration: "bold", margin: "0.5rem" }}>
                     {tour.name}
-                </h4>
+                </h5>
                 <p>
-                    {readMoreOrLess === '...read less' ? tour.info : tour.info.substring(0, 200)}
+                    {readMoreOrLess === ' read less' ? tour.info : tour.info.substring(0, 150)}
                     <span onClick={() => {
-                        readMoreOrLess === '...read less' ? setReadMoreOrLess('...read more') : setReadMoreOrLess('...read less')
+                        readMoreOrLess === ' read less' ? setReadMoreOrLess('...read more') : setReadMoreOrLess(' read less')
 
                     }} style={{ color: "green", textDecoration: "underline", cursor: "pointer" }}>{readMoreOrLess}</span>
                 </p>
-                <button onClick={() => {
+                <button onMouseLeave={() => {
+                    setIsHover(!isHover)
+                }} onMouseEnter={() => {
+                    setIsHover(!isHover)
+                }} onClick={() => {
                     removeTour(tour.id)
-                }} style={{ width: "100%", marginTop: "1rem", marginBottom: "1rem", cursor: "pointer" }}>not interested</button>
+                }} style={{ width: "50%", padding: "1rem", marginTop: "4rem", marginBottom: "1rem", borderRadius: "0.5rem", cursor: "pointer", backgroundColor: isHover ? "green" : "transparent", border: "1px solid green", color: isHover ? "white" : "green" }}>not interested</button>
             </div>
         </article>
     );
