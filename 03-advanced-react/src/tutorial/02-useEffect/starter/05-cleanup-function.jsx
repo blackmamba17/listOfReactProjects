@@ -1,27 +1,29 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from 'react';
+import shaka from 'shaka-player';
 
-const CleanupFunction = () => {
+export const VideoPlayer = ({ videoUrl }) => {
+  useEffect(() => {
+    const player = new shaka.Player(document.getElementById('video'));
 
-  /*  
-    mp4 coded via hevc works with this
-  let obj = document.createElement('video')
-    console.log(obj.canPlayType('video/mp4'));
-  
-    return (
-      <div>
-        <video controls id="video" style={{ width: "500px", height: "500px" }}>
-          <source src="video.mp4" type="video/mp4;" />
-        </video>
-  
-  
-      </div>
-    ); */
+    player.load(videoUrl).then(() => {
+      console.log('Video caricato con successo!');
+    }).catch((error) => {
+      console.error('Errore nel caricamento del video', error);
+    });
+
+    return () => {
+      player.destroy();
+    };
+  }, [videoUrl]);
+
   return (
-    <>
-      test hevc
-
-    </>
-  )
+    <div>
+      <video id="video" width="600" height="400" controls>
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+  );
 };
 
-export default CleanupFunction;
+
+
