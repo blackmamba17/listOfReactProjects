@@ -9,7 +9,7 @@ export const Article = () => {
     const [isArrowRightHover, setIsArrowRightHover] = useState(false)
     const [isArrowLeftHover, setIsArrowLeftHover] = useState(false)
     const [getIndexOfReview, setIndexOfReview] = useState(0)
-    const { id, image, job, name, text } = reviews[getIndexOfReview]
+    const { image, job, name, text } = reviews[getIndexOfReview]
 
     useEffect(() => {
 
@@ -66,11 +66,17 @@ export const Article = () => {
                             setIsArrowLeftHover(!isArrowLeftHover)
                         }} style={{ fontSize: "3rem", margin: "0.6rem", color: isArrowLeftHover ? "#ab54ab" : "purple", textDecoration: "bold", cursor: isArrowLeftHover ? "pointer" : "default", userSelect: "none" }}>{'>'}</a>
                     </div>
-                    <button onMouseEnter={() => {
-                        setIsButtonHover(!isButtonHover)
-                    }} onMouseLeave={() => {
-                        setIsButtonHover(!isButtonHover)
-                    }} style={{ display: "block", width: "25%", padding: "0.5rem", backgroundColor: isButtonHover ? "purple" : "#ab54ab", color: "white", fontWeight: "bold", borderRadius: "10px", border: "transparent" }}>surprise me</button>
+                    <button
+                        onClick={() => {
+                            let newIndex = Math.floor(Math.random() * reviews.length)
+                            console.log(newIndex)
+                            if (newIndex === getIndexOfReview) newIndex++
+                            setIndexOfReview(newIndex)
+                        }} onMouseEnter={() => {
+                            setIsButtonHover(!isButtonHover)
+                        }} onMouseLeave={() => {
+                            setIsButtonHover(!isButtonHover)
+                        }} style={{ display: "block", width: "25%", padding: "0.5rem", backgroundColor: isButtonHover ? "purple" : "#ab54ab", color: "white", fontWeight: "bold", borderRadius: "10px", border: "transparent" }}>surprise me</button>
                 </Typography>
             </div>
         </article >
