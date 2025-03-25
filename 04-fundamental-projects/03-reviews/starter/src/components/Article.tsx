@@ -69,8 +69,9 @@ export const Article = () => {
                     <button
                         onClick={() => {
                             let newIndex = Math.floor(Math.random() * reviews.length)
-                            console.log(newIndex)
-                            if (newIndex === getIndexOfReview) newIndex++
+                            //console.log(newIndex)
+                            if (newIndex === getIndexOfReview && newIndex != (reviews.length - 1)) newIndex++
+                            else if (newIndex === getIndexOfReview && newIndex === (reviews.length - 1)) newIndex--
                             setIndexOfReview(newIndex)
                         }} onMouseEnter={() => {
                             setIsButtonHover(!isButtonHover)

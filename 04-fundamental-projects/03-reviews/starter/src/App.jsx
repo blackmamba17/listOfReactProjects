@@ -1,4 +1,6 @@
+import { Hero } from './components/Hero'
+
 const App = () => {
-  return <h2>Reviews Starter</h2>;
+  return <Hero />
 };
 export default App;
