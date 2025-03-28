@@ -4,11 +4,11 @@ import { questions } from './data'
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: "white", width: "80vw", height: "70vh", margin: "auto", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", borderRadius: "1rem", boxShadow: "0.5rem 0.5rem 0.5rem" }}>
-      <Title title="Questions" />
-      {questions.map((question, index) => {
-        return <Question key={"question" + index} {...question} />
-      })}
+    <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ backgroundColor: "white", width: "80%", height: "80vh", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", borderRadius: "1rem", boxShadow: "0.5rem 0.5rem 0.5rem", fontSize: "1rem" }}>
+        <Title title="Questions" />
+        <Question questions={questions} />
+      </div>
     </div>
   );
 };
