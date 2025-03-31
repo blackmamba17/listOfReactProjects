@@ -8,6 +8,9 @@ export const Question: FC<{
     }[]
 }> = ({ questions }) => {
     const [isClicked, setIsClicked] = useState(false)
+    const [currentButtonClicked, setCurrentButtonClicked] = useState('')
+
+    console.log(isClicked)
 
     return (
         <>
@@ -17,11 +20,14 @@ export const Question: FC<{
                         <h5>{title}</h5>
                         <button id={'button' + id}
                             onClick={(e) => {
-                                setIsClicked(!isClicked)
+                                setCurrentButtonClicked(e.currentTarget.id)
+                                if (e.currentTarget.id === currentButtonClicked) {
+                                    setIsClicked(!isClicked)
+                                }
                             }} style={{ borderRadius: "50%", width: "2rem", height: "2rem", border: "transparent", backgroundColor: "#5bafb7", color: "white", cursor: "pointer" }}>+</button>
                     </p>
                     <p>
-                        {isClicked && info}
+                        {currentButtonClicked === ('button' + id) && isClicked && info}
 
                     </p>
                 </div>)
