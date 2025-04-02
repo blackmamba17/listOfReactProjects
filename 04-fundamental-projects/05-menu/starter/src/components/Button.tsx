@@ -9,5 +9,5 @@ export const Button: FC<PropsWithChildren> = ({ children }) => {
         setIsButtonHover(!isButtonHover)
     }} onMouseLeave={() => {
         setIsButtonHover(!isButtonHover)
-    }} style={{ color: "white", backgroundColor: isButtonHover ? "#cb9126" : "orange", border: "transparent", padding: "0.5rem", borderRadius: "0.5rem", width: isButtonHover ? "20%" : "16%", boxShadow: "1px 5px 1rem grey", cursor: "pointer" }}>{children}</button>
+    }} style={{ color: "white", backgroundColor: isButtonHover ? "#cb9126" : "orange", border: "transparent", borderRadius: "0.5rem", width: isButtonHover ? "22%" : "20%", boxShadow: "1px 5px 1rem grey", cursor: "pointer", fontSize: "1rem", padding: "0.5rem" }}>{children}</button>
 }
