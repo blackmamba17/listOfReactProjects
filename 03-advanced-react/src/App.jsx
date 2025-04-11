@@ -1,12 +1,9 @@
-import { VideoPlayer } from './tutorial/02-useEffect/starter/05-cleanup-function'
+import ControlledInputs from '../src/tutorial/06-forms/starter/01-controlled-inputs'
 
 function App() {
   return (
-    <div className='container'>
-      <video controls>
-        <source src='nuovovideo.mp4' />
-      </video>
-    </div>
+    <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}><ControlledInputs /></div>
+
   );
 }
 
